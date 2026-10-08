@@ -1,0 +1,22 @@
+# 실제 학생 데이터 — 절대 커밋 금지 (pre-commit + CI에서도 차단 예정)
+samples/real/
+uploads/
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+.wrangler/
+
+# 비밀
+.env
+.env.*
+.dev.vars
+!.env.example
+!.dev.vars.example
+
+# 빌드·의존성
+node_modules/
+.next/
+.open-next/
+eval/results/*.json
+__pycache__/
