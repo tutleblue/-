@@ -1,0 +1,21 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # pre-commit 훅은 --no-verify로 우회할 수 있으므로 CI에서 다시 검사한다.
+      - run: npm run check:data
+      - run: npm run typecheck
+      - run: npm test

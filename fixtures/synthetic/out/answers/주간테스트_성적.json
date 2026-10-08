@@ -1,0 +1,381 @@
+{
+ "file": "주간테스트_성적.xlsx",
+ "source": "weekly_scores",
+ "rows": [
+  {
+   "sheet": "주간테스트",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "제목 행"
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 2,
+   "outcome": "skip",
+   "reason": "빈 행"
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 3,
+   "outcome": "skip",
+   "reason": "헤더"
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 4,
+   "outcome": "record",
+   "studentId": "s01",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 5,
+   "outcome": "record",
+   "studentId": "s02",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s03",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s04",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s05",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s06",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s07",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s08",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s09",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s10",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s11",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s12",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 16,
+   "outcome": "record",
+   "studentId": "s13",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 17,
+   "outcome": "skip",
+   "reason": "반평균 행(데이터 아님)"
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 18,
+   "outcome": "record",
+   "studentId": "s14",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 19,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "같은 반 동명이인",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 20,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "같은 반 동명이인",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 21,
+   "outcome": "record",
+   "studentId": "s17",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 22,
+   "outcome": "record",
+   "studentId": "s18",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 23,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s19"
+   ],
+   "reason": "이름 오타(정하율) — 비슷한 이름 후보로 확인 요청, 신규 학생 생성 금지",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 24,
+   "outcome": "record",
+   "studentId": "s20",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 25,
+   "outcome": "record",
+   "studentId": "s21",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 26,
+   "outcome": "record",
+   "studentId": "s22",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 27,
+   "outcome": "record",
+   "studentId": "s23",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 28,
+   "outcome": "record",
+   "studentId": "s24",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 29,
+   "outcome": "record",
+   "studentId": "s25",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 30,
+   "outcome": "record",
+   "studentId": "s26",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 31,
+   "outcome": "record",
+   "studentId": "s27",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 32,
+   "outcome": "skip",
+   "reason": "반평균 행(데이터 아님)"
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 33,
+   "outcome": "record",
+   "studentId": "s28",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 34,
+   "outcome": "record",
+   "studentId": "s29",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 35,
+   "outcome": "record",
+   "studentId": "s30",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 36,
+   "outcome": "record",
+   "studentId": "s31",
+   "reason": "이름+반 일치(유일)",
+   "warnings": [
+    {
+     "col": "D",
+     "raw": "재시험"
+    }
+   ]
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 37,
+   "outcome": "record",
+   "studentId": "s32",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 38,
+   "outcome": "record",
+   "studentId": "s33",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 39,
+   "outcome": "record",
+   "studentId": "s34",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 40,
+   "outcome": "record",
+   "studentId": "s35",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 41,
+   "outcome": "record",
+   "studentId": "s36",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 42,
+   "outcome": "record",
+   "studentId": "s37",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 43,
+   "outcome": "record",
+   "studentId": "s38",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 44,
+   "outcome": "record",
+   "studentId": "s39",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 45,
+   "outcome": "record",
+   "studentId": "s40",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "주간테스트",
+   "row": 46,
+   "outcome": "skip",
+   "reason": "반평균 행(데이터 아님)"
+  }
+ ],
+ "notes": [
+  "'이름(반)'을 분리한다. 점수 표기: 85/100, 85, 85점 → 85 (만점 100).",
+  "미응시/결시/- → 응시하지 않음(0점이 아님).",
+  "'재시험'은 변환 불가 — 경고와 함께 원문 보존.",
+  "평균 열과 반평균 행은 가져오지 않는다."
+ ]
+}

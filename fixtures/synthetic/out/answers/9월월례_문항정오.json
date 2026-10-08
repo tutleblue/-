@@ -1,0 +1,340 @@
+{
+ "file": "9월월례_문항정오.csv",
+ "source": "item_results",
+ "encoding": "cp949",
+ "rows": [
+  {
+   "sheet": "csv",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "헤더"
+  },
+  {
+   "sheet": "csv",
+   "row": 2,
+   "outcome": "skip",
+   "reason": "정답 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 3,
+   "outcome": "skip",
+   "reason": "배점 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 4,
+   "outcome": "record",
+   "studentId": "s01",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 5,
+   "outcome": "record",
+   "studentId": "s02",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s03",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s04",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s05",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s06",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s07",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s08",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s09",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s10",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s11",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s12",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 16,
+   "outcome": "record",
+   "studentId": "s13",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 17,
+   "outcome": "skip",
+   "reason": "정답 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 18,
+   "outcome": "skip",
+   "reason": "배점 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 19,
+   "outcome": "record",
+   "studentId": "s14",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 20,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "학번은 있지만 첫 가져오기라 학번↔학생 연결이 없음 + 같은 반 동명이인. 확정 후 학번을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 21,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "학번은 있지만 첫 가져오기라 학번↔학생 연결이 없음 + 같은 반 동명이인. 확정 후 학번을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 22,
+   "outcome": "record",
+   "studentId": "s17",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 23,
+   "outcome": "record",
+   "studentId": "s18",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 24,
+   "outcome": "record",
+   "studentId": "s19",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 25,
+   "outcome": "record",
+   "studentId": "s20",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 26,
+   "outcome": "record",
+   "studentId": "s21",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 27,
+   "outcome": "record",
+   "studentId": "s22",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 28,
+   "outcome": "record",
+   "studentId": "s23",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 29,
+   "outcome": "record",
+   "studentId": "s24",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 30,
+   "outcome": "record",
+   "studentId": "s25",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 31,
+   "outcome": "record",
+   "studentId": "s26",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 32,
+   "outcome": "record",
+   "studentId": "s27",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 33,
+   "outcome": "skip",
+   "reason": "정답 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 34,
+   "outcome": "skip",
+   "reason": "배점 행"
+  },
+  {
+   "sheet": "csv",
+   "row": 35,
+   "outcome": "record",
+   "studentId": "s28",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 36,
+   "outcome": "record",
+   "studentId": "s29",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 37,
+   "outcome": "record",
+   "studentId": "s30",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 38,
+   "outcome": "record",
+   "studentId": "s31",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 39,
+   "outcome": "record",
+   "studentId": "s32",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 40,
+   "outcome": "record",
+   "studentId": "s33",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 41,
+   "outcome": "record",
+   "studentId": "s34",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 42,
+   "outcome": "record",
+   "studentId": "s35",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 43,
+   "outcome": "record",
+   "studentId": "s36",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 44,
+   "outcome": "record",
+   "studentId": "s37",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 45,
+   "outcome": "record",
+   "studentId": "s38",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 46,
+   "outcome": "record",
+   "studentId": "s39",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  },
+  {
+   "sheet": "csv",
+   "row": 47,
+   "outcome": "record",
+   "studentId": "s40",
+   "reason": "이름+반 일치(유일) → 학번 연결을 기억"
+  }
+ ],
+ "notes": [
+  "CP949 인코딩. 반마다 정답·배점 행이 데이터 앞에 있다.",
+  "결시 행은 문항 칸이 비어 있다 → 응시하지 않음.",
+  "학번 5자리는 채점 프로그램 식별자. 확정된 연결은 다음 가져오기에서 자동 매칭에 쓴다."
+ ]
+}

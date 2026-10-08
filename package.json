@@ -1,0 +1,22 @@
+{
+  "name": "academy-chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "gen:synthetic": "tsx fixtures/synthetic/generate.ts",
+    "gen:cases": "tsx eval/build-cases.ts",
+    "check:data": "node scripts/check-no-real-data.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "fflate": "^0.8.3",
+    "iconv-lite": "^0.7.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.3"
+  }
+}

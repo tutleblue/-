@@ -1,0 +1,415 @@
+{
+ "file": "출결부_8월-10월.xlsx",
+ "source": "attendance",
+ "rows": [
+  {
+   "sheet": "중1기본",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "제목 행"
+  },
+  {
+   "sheet": "중1기본",
+   "row": 2,
+   "outcome": "skip",
+   "reason": "헤더(날짜가 열로 펼쳐짐)"
+  },
+  {
+   "sheet": "중1기본",
+   "row": 3,
+   "outcome": "record",
+   "studentId": "s01",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 4,
+   "outcome": "record",
+   "studentId": "s02",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 5,
+   "outcome": "record",
+   "studentId": "s03",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s04",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s05",
+   "reason": "이름+반 일치(유일)",
+   "warnings": [
+    {
+     "col": "H",
+     "raw": "?"
+    }
+   ]
+  },
+  {
+   "sheet": "중1기본",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s06",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s07",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s08",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s09",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s10",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s11",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s12",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s13",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중1기본",
+   "row": 16,
+   "outcome": "skip",
+   "reason": "합계 행"
+  },
+  {
+   "sheet": "중1기본",
+   "row": 17,
+   "outcome": "skip",
+   "reason": "안내 문구 행"
+  },
+  {
+   "sheet": "중2심화",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "제목 행"
+  },
+  {
+   "sheet": "중2심화",
+   "row": 2,
+   "outcome": "skip",
+   "reason": "헤더(날짜가 열로 펼쳐짐)"
+  },
+  {
+   "sheet": "중2심화",
+   "row": 3,
+   "outcome": "record",
+   "studentId": "s14",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 4,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "같은 반 동명이인 — ID 없는 원천이라 이름·반으로 구분 불가",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 5,
+   "outcome": "needs_confirmation",
+   "candidates": [
+    "s15",
+    "s16"
+   ],
+   "reason": "같은 반 동명이인 — ID 없는 원천이라 이름·반으로 구분 불가",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s17",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s18",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s19",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s20",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s21",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s22",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s23",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s24",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s25",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s26",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 16,
+   "outcome": "record",
+   "studentId": "s27",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중2심화",
+   "row": 17,
+   "outcome": "skip",
+   "reason": "합계 행"
+  },
+  {
+   "sheet": "중2심화",
+   "row": 18,
+   "outcome": "skip",
+   "reason": "안내 문구 행"
+  },
+  {
+   "sheet": "중3내신",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "제목 행"
+  },
+  {
+   "sheet": "중3내신",
+   "row": 2,
+   "outcome": "skip",
+   "reason": "헤더(날짜가 열로 펼쳐짐)"
+  },
+  {
+   "sheet": "중3내신",
+   "row": 3,
+   "outcome": "record",
+   "studentId": "s28",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 4,
+   "outcome": "record",
+   "studentId": "s29",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 5,
+   "outcome": "record",
+   "studentId": "s30",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s31",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s32",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s33",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s34",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s35",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s36",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s37",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s38",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s39",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s40",
+   "reason": "이름+반 일치(유일)",
+   "warnings": []
+  },
+  {
+   "sheet": "중3내신",
+   "row": 16,
+   "outcome": "skip",
+   "reason": "합계 행"
+  },
+  {
+   "sheet": "중3내신",
+   "row": 17,
+   "outcome": "skip",
+   "reason": "안내 문구 행"
+  }
+ ],
+ "notes": [
+  "시트 이름이 반이다. 날짜 열(8/11 …)을 기록 하나씩으로 펼친다. 연도는 파일 맥락(2026)에서.",
+  "표기: O=출석, 지각/△=지각, X/결=결석, 휴강=수업 없음(기록 아님).",
+  "'?'는 변환 불가 — 버리지 말고 경고와 함께 원문 보존.",
+  "출석률 열은 파생값이므로 가져오지 않는다(코드로 다시 계산)."
+ ]
+}

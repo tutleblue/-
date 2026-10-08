@@ -1,0 +1,105 @@
+{"id":"answer-001","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 기본반 수업료 얼마예요?"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c1.monthlyFee":280000}}}
+{"id":"answer-002","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1기본 한 달에 얼마에요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c1.monthlyFee":280000}}}
+{"id":"answer-003","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 수강료 알려주세요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c1.monthlyFee":280000}}}
+{"id":"answer-004","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 기본반 비용이랑 일주일에 몇 번 하는지요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c1.monthlyFee":280000}}}
+{"id":"answer-005","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 기본반 수업료랑 수업 시간이요"}],"expect":{"branch":"answer","cites":["k-fee","k-timetable"],"facts":{"c1.monthlyFee":280000}}}
+{"id":"answer-006","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 기본반 무슨 요일에 해요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-007","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1기본 몇 시에 끝나요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-008","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1은 수업 시간이 어떻게 돼요"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-009","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 수업료 얼마예요?"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c2.monthlyFee":350000}}}
+{"id":"answer-010","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2심화 한 달에 얼마에요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c2.monthlyFee":350000}}}
+{"id":"answer-011","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 수강료 알려주세요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c2.monthlyFee":350000}}}
+{"id":"answer-012","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 비용이랑 일주일에 몇 번 하는지요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c2.monthlyFee":350000}}}
+{"id":"answer-013","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 수업료랑 시간 알려 주세요"}],"expect":{"branch":"answer","cites":["k-fee","k-timetable"],"facts":{"c2.monthlyFee":350000}}}
+{"id":"answer-014","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 무슨 요일에 해요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-015","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2심화 몇 시에 끝나요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-016","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2은 수업 시간이 어떻게 돼요"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-017","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 내신반 수업료 얼마예요?"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c3.monthlyFee":380000}}}
+{"id":"answer-018","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3내신 한 달에 얼마에요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c3.monthlyFee":380000}}}
+{"id":"answer-019","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 수강료 알려주세요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c3.monthlyFee":380000}}}
+{"id":"answer-020","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 내신반 비용이랑 일주일에 몇 번 하는지요"}],"expect":{"branch":"answer","cites":["k-fee"],"facts":{"c3.monthlyFee":380000}}}
+{"id":"answer-021","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 내신반 수업료랑 수업 시간이요"}],"expect":{"branch":"answer","cites":["k-fee","k-timetable"],"facts":{"c3.monthlyFee":380000}}}
+{"id":"answer-022","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 내신반 무슨 요일에 해요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-023","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3내신 몇 시에 끝나요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-024","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3은 수업 시간이 어떻게 돼요"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-025","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"레벨테스트 비용 있나요?"}],"expect":{"branch":"answer","cites":["k-level","k-fee"]}}
+{"id":"answer-026","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"레테 몇 분 걸려요"}],"expect":{"branch":"answer","cites":["k-level"]}}
+{"id":"answer-027","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"레벨테스트 언제 봐요?"}],"expect":{"branch":"answer","cites":["k-level"]}}
+{"id":"answer-028","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"레벨 테스트 결과는 언제 알 수 있어요?"}],"expect":{"branch":"answer","cites":["k-level"]}}
+{"id":"answer-029","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"보강 규정이 어떻게 돼요?"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-030","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"결석하면 보강 해 주나요"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-031","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"보강은 한 달에 몇 번까지 돼요?"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-032","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"보강 신청은 언제까지 해야 돼요?"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-033","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"당일에 갑자기 못 가면 보강 돼요?"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-034","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"보강은 무슨 요일에 해요"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-035","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"결석하면 미리 연락해야 하나요?"}],"expect":{"branch":"answer","cites":["k-absence"]}}
+{"id":"answer-036","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"지각할 것 같으면 어떻게 해요"}],"expect":{"branch":"answer","cites":["k-absence"]}}
+{"id":"answer-037","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"연락 없이 결석하면 어떻게 돼요?"}],"expect":{"branch":"answer","cites":["k-absence"]}}
+{"id":"answer-038","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 어디에 있어요?"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-039","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"주소 알려주세요"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-040","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 전화번호 뭐예요"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-041","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"몇 시까지 해요?"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-042","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"토요일에도 문 열어요?"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-043","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"일요일에 상담 가능해요?"}],"expect":{"branch":"answer","cites":["k-location","k-consult"]}}
+{"id":"answer-044","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"상담은 얼마나 걸려요?"}],"expect":{"branch":"answer","cites":["k-consult"]}}
+{"id":"answer-045","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"상담 전화로도 되나요"}],"expect":{"branch":"answer","cites":["k-consult"]}}
+{"id":"answer-046","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"상담 몇 시에 할 수 있어요?"}],"expect":{"branch":"answer","cites":["k-consult"]}}
+{"id":"answer-047","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"추석 때 수업 해요?"}],"expect":{"branch":"answer","cites":["k-chuseok"]}}
+{"id":"answer-048","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"9월 24일 휴강이에요?"}],"expect":{"branch":"answer","cites":["k-chuseok"]}}
+{"id":"answer-049","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"추석 연휴 휴강한 거 보강해 주나요?"}],"expect":{"branch":"answer","cites":["k-chuseok"]}}
+{"id":"answer-050","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"한글날 수업 있어요?"}],"expect":{"branch":"answer","cites":["k-hangul"]}}
+{"id":"answer-051","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"10월 9일 금요일 중3 수업 하나요"}],"expect":{"branch":"answer","cites":["k-hangul"]}}
+{"id":"answer-052","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중간고사 대비 특강 있어요?"}],"expect":{"branch":"answer","cites":["k-exam"]}}
+{"id":"answer-053","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"시험 대비 특강 언제부터예요?"}],"expect":{"branch":"answer","cites":["k-exam"]}}
+{"id":"answer-054","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"반 옮기려면 언제까지 신청해야 돼요?"}],"expect":{"branch":"answer","cites":["k-terms"]}}
+{"id":"answer-055","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"재등록 신청하면 언제부터 적용돼요?"}],"expect":{"branch":"answer","cites":["k-terms"]}}
+{"id":"answer-056","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"수업 영상 찍은 거 어디에 써요?"}],"expect":{"branch":"answer","cites":["k-terms"]}}
+{"id":"answer-057","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"교재비 따로 내요?"}],"expect":{"branch":"answer","cites":["k-fee"]}}
+{"id":"answer-058","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 담당 선생님 누구예요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-059","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중1 기본반 선생님 성함이요"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-060","category":"answer","principal":{"kind":"guardian","guardianId":"g14","subjectIds":["s14"]},"turns":[{"say":"보강 몇 번까지 돼요?"}],"expect":{"branch":"answer","cites":["k-makeup"]}}
+{"id":"answer-061","category":"answer","principal":{"kind":"guardian","guardianId":"g14","subjectIds":["s14"]},"turns":[{"say":"학원 전화번호 좀요"}],"expect":{"branch":"answer","cites":["k-location"]}}
+{"id":"answer-062","category":"answer","principal":{"kind":"guardian","guardianId":"g14","subjectIds":["s14"]},"turns":[{"say":"중2 심화반 몇 시에 끝나요?"}],"expect":{"branch":"answer","cites":["k-timetable"]}}
+{"id":"answer-063","category":"answer","principal":{"kind":"guardian","guardianId":"g14","subjectIds":["s14"]},"turns":[{"say":"추석에 휴강했던 거 보강 있어요?"}],"expect":{"branch":"answer","cites":["k-chuseok"]}}
+{"id":"answer-064","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"환불 규정이 어떻게 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-065","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중간에 그만두면 환불 받을 수 있나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-066","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"환불은 며칠 안에 해 줘요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-067","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원비 일할 계산 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-068","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"주차 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-069","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 건물에 주차장 있어요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-070","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"차 대고 기다려도 되나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-071","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 차량 운행해요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-072","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"셔틀 있나요? 집이 좀 멀어서요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-073","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"형제 할인 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-074","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"둘째도 다니면 할인 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-075","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"교재비 얼마예요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-076","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 교재비 정확히 얼마인가요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-077","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"특강 수강료 얼마예요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-078","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중간고사 특강 대상이 누구예요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-079","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"고1 수업도 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-080","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"고등부 반 있나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-081","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"초등학생도 받아요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-082","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"온라인 수업도 해요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-083","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"줌으로 수업 들을 수 있나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-084","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"장학금 제도 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-085","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"성적 오르면 수업료 깎아 주나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-086","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"선생님들 어느 대학 나왔어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-087","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"남궁별 선생님 경력이 어떻게 돼요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-088","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"영어도 가르쳐요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-089","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"과학 수업 있나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-090","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"한 반에 몇 명이에요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-091","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"카드 결제 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-092","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"현금영수증 돼요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-093","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 근처에 밥 먹을 데 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-094","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"작년 중학교 기출문제 받을 수 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-095","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"방학 특강은 언제 해요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-096","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"자습실 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-097","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 끝나고 픽업 기다릴 곳 있어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-098","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"1:1 과외도 해 주시나요"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-099","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"수업 중에 휴대폰 걷어요?"}],"expect":{"branch":"handoff","handoff":true}}
+{"id":"answer-100","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중2 심화반 수업료랑 환불 규정 알려 주세요"}],"expect":{"branch":"answer","cites":["k-fee"],"handoff":true}}
+{"id":"answer-101","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"레벨테스트 비용이랑 주차 되는지요"}],"expect":{"branch":"answer","cites":["k-level"],"handoff":true}}
+{"id":"answer-102","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"상담 시간이랑 학원 차량 있는지 궁금해요"}],"expect":{"branch":"answer","cites":["k-consult"],"handoff":true}}
+{"id":"answer-103","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"중3 수업 시간하고 교재비요"}],"expect":{"branch":"answer","cites":["k-timetable"],"handoff":true}}
+{"id":"answer-104","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"보강 규정이랑 형제 할인 있는지"}],"expect":{"branch":"answer","cites":["k-makeup"],"handoff":true}}
+{"id":"answer-105","category":"answer","principal":{"kind":"inquirer"},"turns":[{"say":"학원 위치랑 자습실 있는지요"}],"expect":{"branch":"answer","cites":["k-location"],"handoff":true}}
