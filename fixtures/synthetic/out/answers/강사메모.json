@@ -1,0 +1,155 @@
+{
+ "file": "강사메모.xlsx",
+ "source": "memos",
+ "rows": [
+  {
+   "sheet": "메모",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "헤더"
+  },
+  {
+   "sheet": "메모",
+   "row": 2,
+   "outcome": "record",
+   "studentId": "s03",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 3,
+   "outcome": "record",
+   "studentId": "s05",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 4,
+   "outcome": "record",
+   "studentId": "s08",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 5,
+   "outcome": "record",
+   "studentId": "s10",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 6,
+   "outcome": "record",
+   "studentId": "s12",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 7,
+   "outcome": "record",
+   "studentId": "s17",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 8,
+   "outcome": "record",
+   "studentId": "s20",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 9,
+   "outcome": "record",
+   "studentId": "s21",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 10,
+   "outcome": "record",
+   "studentId": "s22",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 11,
+   "outcome": "record",
+   "studentId": "s25",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 12,
+   "outcome": "record",
+   "studentId": "s28",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 13,
+   "outcome": "record",
+   "studentId": "s29",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 14,
+   "outcome": "record",
+   "studentId": "s30",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 15,
+   "outcome": "record",
+   "studentId": "s31",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 16,
+   "outcome": "record",
+   "studentId": "s32",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 17,
+   "outcome": "record",
+   "studentId": "s33",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 18,
+   "outcome": "record",
+   "studentId": "s34",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 19,
+   "outcome": "record",
+   "studentId": "s35",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 20,
+   "outcome": "record",
+   "studentId": "s36",
+   "reason": "이름+반 일치(유일)"
+  },
+  {
+   "sheet": "메모",
+   "row": 21,
+   "outcome": "record",
+   "studentId": "s40",
+   "reason": "이름+반 일치(유일)"
+  }
+ ],
+ "notes": [
+  "날짜 표기가 섞여 있다: 엑셀 날짜, 2026.09.03, 9/3(연도는 파일 맥락)."
+ ]
+}

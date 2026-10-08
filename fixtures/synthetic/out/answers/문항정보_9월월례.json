@@ -1,0 +1,375 @@
+{
+ "file": "문항정보_9월월례.xlsx",
+ "source": "items",
+ "rows": [
+  {
+   "sheet": "문항정보",
+   "row": 1,
+   "outcome": "skip",
+   "reason": "헤더"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 2,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 1번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 3,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 2번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 4,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 3번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 5,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 4번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 6,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 5번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 7,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 6번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 8,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 7번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 9,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 8번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 10,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 9번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 11,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 10번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 12,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 11번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 13,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 12번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 14,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 13번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 15,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 14번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 16,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 15번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 17,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 16번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 18,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 17번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 19,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 18번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 20,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 19번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 21,
+   "outcome": "record",
+   "reason": "문항 정보(중1기본 20번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 22,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 1번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 23,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 2번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 24,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 3번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 25,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 4번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 26,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 5번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 27,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 6번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 28,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 7번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 29,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 8번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 30,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 9번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 31,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 10번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 32,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 11번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 33,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 12번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 34,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 13번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 35,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 14번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 36,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 15번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 37,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 16번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 38,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 17번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 39,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 18번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 40,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 19번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 41,
+   "outcome": "record",
+   "reason": "문항 정보(중2심화 20번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 42,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 1번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 43,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 2번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 44,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 3번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 45,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 4번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 46,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 5번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 47,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 6번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 48,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 7번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 49,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 8번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 50,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 9번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 51,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 10번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 52,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 11번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 53,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 12번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 54,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 13번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 55,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 14번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 56,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 15번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 57,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 16번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 58,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 17번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 59,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 18번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 60,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 19번) — 학생 데이터 아님"
+  },
+  {
+   "sheet": "문항정보",
+   "row": 61,
+   "outcome": "record",
+   "reason": "문항 정보(중3내신 20번) — 학생 데이터 아님"
+  }
+ ],
+ "notes": [
+  "반 열이 세로로 병합되어 있다 → 병합 값을 아래 행에 채운다."
+ ]
+}
