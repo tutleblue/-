@@ -1,7 +1,7 @@
 # HANDOFF — 자리(가칭)
 
 > 이 문서는 대화 기록을 볼 수 없는 다른 코딩 도구(Codex 등)가 이 파일만 읽고 작업을 이어받을 수 있도록 쓴 자기완결적 브리프입니다. 진행 상황이 바뀔 때마다 "6. 현재 상태"와 관련 항목을 갱신합니다.
-> 마지막 갱신: 2026-10-08 (M0)
+> 마지막 갱신: 2026-10-08 (M0, 사용자 답변 반영)
 
 ---
 
@@ -100,36 +100,37 @@
 
 ---
 
-## 3. 기술 방향 (M0 제안 — 사용자 확인 전)
+## 3. 기술 방향 (M0 확정 — 2026-10-08 사용자 답변 반영)
 
-### 3.1 스택 제안
+### 3.1 스택 (배포처: Cloudflare — 사용자 지정)
 
-| 영역 | 제안 | 이유 | 대안(기각 이유) |
+| 영역 | 결정 | 이유 | 기각한 대안 |
 |---|---|---|---|
 | 프레임워크 | Next.js (App Router) + TypeScript strict | 지시서 기본값. Route Handler로 스트리밍 응답 | — |
-| 배포 | **Vercel** (함수 리전 `icn1` 서울) | Next.js 1급 지원, 스트리밍 응답, 프리뷰 URL로 심사 데모 분리 쉬움 | Cloudflare Workers+OpenNext: Next 기능 일부 어댑터 의존, 디버깅 비용 큼 / 자체 서버(VPS): 운영 부담 |
-| DB | **Supabase Postgres** (서울 리전) + Drizzle ORM | 관계형 데이터(주문·항목·감사)에 맞음. 같은 계정에서 실시간·사진 저장소까지 해결 | Neon: 실시간·스토리지 별도 필요 / Cloudflare D1: SQLite, Vercel과 조합 어색 |
-| 실시간(직원 보드·테이블 내역 공유) | **Supabase Realtime (Broadcast)** — 서버가 상태 변경 후 채널로 신호만 보내고, 클라이언트는 신호를 받으면 API로 다시 읽음 | Vercel 함수는 긴 연결(SSE/WebSocket)을 오래 유지하기 어렵다. 신호에 데이터를 싣지 않으므로 권한 우회가 없음 | SSE 직접 구현: Vercel 타임아웃 / 폴링만: 2~3초 지연·요청 낭비 → **폴링은 실시간 실패 시 폴백으로만** |
-| 사진 저장 | Supabase Storage (메뉴 사진·메뉴판 업로드) | 같은 계정 | Vercel Blob |
-| 로컬·테스트 DB | **PGlite**(프로세스 내 Postgres) | 계정·Docker 없이 `npm test`, `npm run eval`, `npm run dev`가 돌아감 → "API 키 없이 모두 동작" 요구 충족 | SQLite: 운영 DB와 SQL 방언 차이 |
-| 비밀번호 해시 | Node `crypto.scrypt` (매장별 salt) | 네이티브 의존성 없이 서버리스에서 동작 | argon2: 네이티브 빌드 이슈 |
-| 세션 | 서명된 httpOnly 쿠키(`jose`) | 손님: 기기 ID + 테이블 세션 ID / 직원·사장님: 매장 ID + 역할 | — |
-| 레이트 리밋 | Postgres 테이블 기반 토큰 버킷(테이블별·기기별) | 추가 서비스 없음. 트래픽이 작다 | Upstash Redis: 계정 하나 더 |
-| AI | `AIProvider` 인터페이스 → `MockProvider`(기본) / `ClaudeProvider`(Anthropic SDK, 스트리밍 + tool use) | 지시서 6.4 | — |
-| 모델 | 대화: 빠른 소형 모델(Haiku 계열), 메뉴판 사진 읽기: 중형(Sonnet 계열). **모든 모델 ID는 env** (`AI_CHAT_MODEL`, `AI_VISION_MODEL`) | 3초 응답 시작 + 건당 비용 | M2에서 실측 후 확정 |
+| 배포 | **Cloudflare Workers** + `@opennextjs/cloudflare` 어댑터 | 사용자가 Cloudflare 지정. 한 계정에서 DB·실시간·저장소·크론까지 해결 | Cloudflare Pages(next-on-pages): 지원 축소 추세 |
+| DB | **Cloudflare D1**(SQLite) + Drizzle ORM (`sqlite-core`), 위치 힌트 `apac` | Workers와 같은 계정·바인딩. 트래픽 규모에 충분 | Hyperdrive+외부 Postgres: 계정 하나 더 |
+| 실시간(직원 보드·테이블 내역 공유) | **Durable Objects + WebSocket Hibernation**. 매장별 DO 1개(직원 보드), 자리 세션별 DO 1개(같은 테이블 폰들). 상태 변경 후 서버가 DO에 신호 → DO가 연결된 화면에 신호만 보냄 → 화면이 API로 재조회 | 서버리스에서도 긴 연결 유지 가능, 유휴 시 과금 거의 없음. 신호에 데이터를 싣지 않아 권한 우회 없음 | SSE 직접 구현 / 폴링 전용 → **폴링은 WebSocket 실패 시 폴백만** |
+| 사진 저장 | **R2** (메뉴 사진·메뉴판 업로드, 형식·크기 검사 후 저장) | 같은 계정 | — |
+| 로컬·테스트 DB | `better-sqlite3` 인메모리 (D1과 같은 SQLite 방언, 같은 Drizzle 스키마·마이그레이션) | 계정·키 없이 `npm test`, `npm run eval`, `npm run dev` 동작 | — |
+| 비밀번호 해시 | WebCrypto **PBKDF2-SHA256**, 매장별 salt, 100,000회(Workers 상한) | Workers 런타임에서 네이티브 의존성 없이 동작 | argon2/scrypt: Workers 호환성 불확실 |
+| 세션 | 서명된 httpOnly 쿠키(`jose`, HS256, 키는 Workers secret) | 손님: 기기 ID + 자리 세션 ID / 직원·사장님: 매장 ID + 역할 | — |
+| 레이트 리밋 | 자리 세션 DO 안의 토큰 버킷(테이블별·기기별) | 이미 세션별 DO가 있으므로 추가 서비스 없음, 원자적 | D1 카운터: 경합 |
+| 보관 기간 삭제 | Cron Trigger(매일) | — | — |
+| AI | `AIProvider` 인터페이스 → `MockProvider`(기본) / `FaultProvider`(평가용) / `ClaudeProvider`(Anthropic SDK, 스트리밍 + tool use) | 지시서 6.4 | — |
+| 모델 | 대화: 빠른 소형 모델(Haiku 계열), 메뉴판 사진 읽기: 중형(Sonnet 계열). **모델 ID는 모두 env** (`AI_CHAT_MODEL`, `AI_VISION_MODEL`), 키는 `wrangler secret` | 3초 응답 시작 + 건당 비용 | M2에서 실측 후 확정 |
 | 테스트 | Vitest(단위·엔진) + Playwright(폰 세로 390×844, 태블릿 가로 1180×820) | 지시서 9장 | — |
-| QR | `qrcode` 패키지로 서버에서 SVG/PDF 생성 | 인쇄용 | — |
+| QR | `qrcode` 패키지로 서버에서 SVG 생성 → 인쇄용 페이지/PDF | — | — |
 
 ### 3.2 아키텍처
 
 ```
-[손님 브라우저] ─QR /t/{token}─▶ Next.js Route Handlers ─▶ engine.runTurn() ─▶ AIProvider
+[손님 브라우저] ─QR /t/{token}─▶ Next.js on Workers ─▶ engine.runTurn() ─▶ AIProvider
       ▲                                │                       │  (도구 호출만)
       │ 카드(데이터는 DB에서)          │                       ▼
       │                                │                 verify/* (코드 검증)
       │                                ▼                       │
-      └──── Realtime 신호 ◀──── Postgres(Supabase) ◀───────────┘ (통과한 것만 기록·실행)
-[직원 보드] ◀── Realtime 신호 + 재조회
+      └─ WebSocket 신호 ◀─ Durable Object ◀─ D1 ◀──────────────┘ (통과한 것만 기록·실행)
+[직원 보드] ◀── 매장 DO의 WebSocket 신호 + API 재조회
 ```
 
 핵심 원칙:
@@ -158,7 +159,7 @@
 
 ```
 /
-├─ HANDOFF.md  CLAUDE.md  package.json  next.config.ts  drizzle.config.ts  .env.example
+├─ HANDOFF.md  CLAUDE.md  package.json  next.config.ts  open-next.config.ts  wrangler.jsonc  drizzle.config.ts  .dev.vars.example
 ├─ src/
 │  ├─ engine/              # 순수 모듈 (Next·DB 드라이버 import 금지)
 │  │  ├─ types.ts          # Item, StoreInfo, Seat, Block, TurnEvent ...
@@ -168,8 +169,9 @@
 │  │  ├─ verify/           # grounding, numbers, safety, order, injection
 │  │  ├─ i18n/             # 언어 감지, 다국어 숫자·안전 사전
 │  │  └─ providers/        # provider.ts(인터페이스), mock.ts, fault.ts, claude.ts
-│  ├─ data/                # Drizzle schema, PgRepository, MemoryRepository
-│  ├─ server/              # auth, rate-limit, realtime, audit, retention
+│  ├─ data/                # Drizzle schema(sqlite), D1Repository, MemoryRepository, migrations/
+│  ├─ server/              # auth, audit, retention
+│  ├─ realtime/            # Durable Objects: StoreBoard, SeatSession(레이트 리밋 포함)
 │  └─ app/
 │     ├─ t/[token]/        # 손님
 │     ├─ s/[store]/board/  # 직원
@@ -188,15 +190,14 @@
 업종 확장 대비: 엔진 타입은 `Item`(제공 항목), `Seat`(자리)처럼 중립 이름을 쓰고, "인분·맵기" 같은 식당 속성은 `attributes`/`tags`로 다룬다. DB 테이블 이름은 지시서대로(`tables`, `menu_items`) 두고 저장소 계층에서 매핑. 숙박·학원용 추상 클래스는 만들지 않는다.
 
 ### 3.5 저장소·버전
-- GitHub: `tutleblue/-`, 작업 브랜치 `claude/new-session-nrrp87`. **현재 이 저장소에는 무관한 기존 프로젝트(철봉.com: `index.html`, `script.js`, `server.py`, `styles.css`, `__pycache__/`)가 있다.** 처리 방식은 §7 질문 참조. 확인 전까지 건드리지 않는다.
+- 사용자 결정: **새 저장소를 만든다** (제안 이름 `jari`, 비공개). 2026-10-08 현재 Claude 연동 권한으로는 저장소 생성이 거부되어(403), 사용자가 GitHub에서 직접 만들고 Claude GitHub 앱을 설치해야 한다. 만들어지기 전까지 이 문서들은 임시로 `tutleblue/-`의 `claude/new-session-nrrp87` 브랜치에 있다. 새 저장소가 생기면 그쪽으로 옮기고 이 줄을 갱신한다.
+- `tutleblue/-`의 기존 무관 프로젝트(철봉.com)는 건드리지 않는다.
 - 웹 배포형이므로 릴리스 zip·앱 내 업데이트 없음. `package.json` version만 단계별로 올린다(M1=0.1.0 …).
-
----
 
 ## 4. 구현 계획
 
 ### M1 (~10/13)
-1. Next.js 골격, PGlite 기반 로컬 DB, Drizzle 스키마(§2.8 전체), `.env.example`.
+1. Next.js + OpenNext(Cloudflare) 골격, Drizzle 스키마(§2.8 전체, SQLite), 로컬 better-sqlite3, `.dev.vars.example`.
 2. **가상 매장 3곳 fixture** (각 20~40 메뉴, 일부 알레르기·맵기 일부러 비움, 다국어 이름, 가게 정보, 요청 버튼).
 3. **평가 문장 초안**: 매장 × 6종 목표 수량(매장당 360+, 총 1,080+). JSONL 한 줄 = `{id, store, category, lang, turns:[...], expect:{kind, item_ids?, quantities?, must_handoff?, must_not:[...]}}`. 다회 턴("아까 그거 하나 더") 포함.
 4. 손님 화면 스타일 후보 3개+ (`design/*.html`) → **멈춤, 선택 받기**.
@@ -206,15 +207,15 @@
 6. 엔진 `runTurn` + 도구 + 검증 5종 + `FaultProvider`(일부러 틀린 가격·없는 ID·수량 부풀리기·근거 없는 문장을 내는 모델 대역 → 검증 계층이 막는지 증명).
 7. `ClaudeProvider`(스트리밍, tool use, 프롬프트 캐싱). 착수 전 Claude API 최신 문서·모델 ID 확인.
 8. `npm run eval`(mock+fault, 키 불필요, CI용) / `npm run eval:real`(Claude, 실제 수치) → Markdown 표 + JSON. 실패 문장 원문 목록 포함.
-9. 배포(Vercel + Supabase) — **사용자 확인 후**. 데모 매장 시드, 비밀번호는 env에서 해시로 주입.
+9. Cloudflare 배포(Workers + D1 + R2 + Durable Objects) — 자원 생성·배포 직전 사용자 확인. 데모 매장 시드, 비밀번호는 secret에서 해시로 주입.
 
 ### M3 (~10/27)
-10. 직원 보드(Realtime + 소리 + 접수/완료/답하기, 답→가게 정보 저장 제안, 테이블 닫기/열기).
+10. 직원 보드(Durable Object WebSocket + 소리 + 접수/완료/답하기, 답→가게 정보 저장 제안, 테이블 닫기/열기).
 11. 사장님 화면(메뉴 CRUD, 메뉴판 사진 → 초안, 가게 정보·요청 버튼, QR PDF, 답 없던 질문).
 12. 사장님 10분 세팅 시나리오 Playwright로 시간 측정.
 
 ### M4 (~11/10)
-13. 운영 지표 화면, 시연 순서 문서, 보관 기간 삭제 작업(Vercel Cron).
+13. 운영 지표 화면, 시연 순서 문서, 보관 기간 삭제 작업(Cron Trigger).
 
 ### 주요 설계 결정과 이유
 - **카드는 ID만, 화면이 DB에서 그림**: 모델이 가격을 "말할" 경로 자체를 없앤다. 검증보다 강한 방어.
@@ -236,23 +237,30 @@
 ---
 
 ## 6. 현재 상태
-- **M0: 설계 완료, 구현 시작 전.** 사용자 확인 대기(§7).
+- **M0 완료(설계), 구현 시작 전.** 2026-10-08 사용자 답변을 §3, §7에 반영.
 - 작성된 파일: `HANDOFF.md`, `CLAUDE.md`. 코드 없음.
-- 다음 할 일: §7 답변 반영 → M1 1~4번 → 스타일 후보 제시 후 멈춤.
+- **막힌 것**: (1) 새 저장소 생성 권한 없음 → 사용자가 생성 필요 (2) 첫 시범 매장이 학원 → 범위 결정 필요(§7-2).
+- 다음 할 일: §7-2 결정 → M1 1~4번 → 스타일 후보 제시 후 멈춤.
 
 ---
 
-## 7. 열린 질문과 기본값 (답이 없으면 괄호 안으로 진행)
+## 7. 결정 사항과 열린 질문
 
-지시서가 지정한 질문:
-1. 서비스 이름 → (자리)
-2. 첫 시범 매장 업종 → (고깃집)
-3. 배포 계정 보유 여부 → (없음. Vercel + Supabase 무료 플랜 제안)
-4. 바꾸고 싶은 기술 선택 → (§3.1 제안대로)
+| # | 질문 | 결정 (2026-10-08) |
+|---|---|---|
+| 1 | 서비스 이름 | **자리** |
+| 2 | 첫 시범 매장 업종 | **학원** (기본값 고깃집이 아님). 범위 영향은 아래 "열린 질문" 참조 |
+| 3 | 배포 계정 | **Cloudflare** → §3.1 스택을 Cloudflare 기준으로 확정 |
+| 4 | 기술 선택 변경 | 없음(제안대로, 배포처만 Cloudflare) |
+| 5 | 저장소 | **새 저장소 생성** (§3.5) |
+| 6 | 닫힌 테이블에서 QR을 찍으면 자동으로 새 세션? | **아니오.** 닫힌 자리에서 QR을 찍으면 메뉴·가게 정보는 볼 수 있지만 주문·요청·AI 입력은 비활성이고 "직원이 자리를 열면 이용할 수 있어요"를 보여 준다. 직원 보드의 [열기]로만 새 세션이 시작된다. (장난 주문 방어가 더 강해지는 대신 직원이 손님을 앉힐 때 한 번 눌러야 함 → 직원 보드에서 [열기]를 가장 쉽게 누를 수 있게 설계) |
+| 7 | 대화 기록 보관 | **세션 종료 후 30일 삭제.** `unanswered_questions`는 전화번호·이메일 패턴을 가린 질문 문장만 계속 보관 |
+| 8 | 평가 수량 | Claude 판단에 위임 → 매장당 360+(6종 최소치), 3곳 합계 1,080+ |
+| 9 | 메뉴 번역 | Claude 판단에 위임 → 저장 시 모델이 번역 초안 생성 → DB 저장 → 사장님 수정 가능. 알레르기는 표준 코드 + 언어별 고정 라벨 |
+| 10 | push | Claude 판단에 위임 → 작업 브랜치 push 진행 |
 
-M0에서 추가로 발견한 불확실 항목:
-5. **저장소**: `tutleblue/-`에 무관한 철봉.com 프로젝트가 있다. → (기본값 없음, 확인 필요. 제안: 새 저장소 생성. 불가하면 철봉 파일을 `legacy/cheolbong/`로 옮기고 자리를 루트에)
-6. **닫힌 테이블에서 QR을 찍으면?** → (자동으로 새 세션을 연다. "닫기"는 이전 손님의 내역을 끊는 용도, "다시 열기"는 실수로 닫은 세션 복구용. 직원이 매번 열어 줄 필요 없음)
-7. **대화 기록 보관 기간** → (테이블 세션 종료 후 30일. `unanswered_questions`는 전화번호·이메일 패턴을 가린 질문 문장만 남겨 계속 보관)
-8. **평가 수량 해석**: "매장마다" 6종 → (매장당 360+, 총 1,080+로 해석)
-9. **메뉴 번역**: 원문+번역 병기의 번역 출처 → (사장님이 메뉴 저장 시 모델이 번역 초안 생성 → DB에 저장 → 사장님 화면에서 수정 가능. 알레르기는 번역문이 아니라 표준 코드 → 언어별 고정 라벨)
+### 열린 질문 — 학원 시범 매장 (§7-2)
+지시서는 "이번에 실제로 만드는 것은 식당뿐"이고 가상 매장·평가 세트도 식당 3곳인데, 첫 시범 매장은 학원이다. 확인 전까지 추측으로 메우지 않는다. 후보:
+- A. 제품·평가·데모는 식당 그대로, M3의 "실제 매장 1곳 세팅"만 학원(상담 데스크/대기 공간). 이 경우 학원에서 쓰는 형태(제공 항목=강좌·수강료, 요청=상담 요청, 주문 → 쓰지 않거나 "상담 신청")를 엔진의 중립 타입으로 처리하고, 학원용 평가 세트를 추가해야 0건 기준을 학원에도 주장할 수 있다.
+- B. 제품 전체를 학원 중심으로 전환(가상 매장·평가 세트를 학원으로).
+- C. 시범은 나중에 식당으로 다시 잡고, 학원은 확장 사례로 발표 자료에만.
