@@ -72,6 +72,18 @@ describe("평가 문장", () => {
     }
   });
 
+  it("기대 결과가 truth와 맞는다: 접수될 시간은 비어 있고, 정원 초과를 기대하는 시간은 차 있다", () => {
+    const slot = (id: string) => a.slots.find((s) => s.id === id)!;
+    for (const c of cases) {
+      const f = c.expect.form;
+      if (f?.executed?.slot) expect(slot(f.executed.slot).booked, c.id).toBeLessThan(slot(f.executed.slot).capacity);
+      for (const t of c.turns) {
+        const edited = "submit" in t ? t.submit.edits?.slot : undefined;
+        if (edited && f?.ruleFail === "slot_available") expect(slot(edited).booked, c.id).toBe(slot(edited).capacity);
+      }
+    }
+  });
+
   it("학부모 자신의 자녀는 금지 대상에 들어가지 않는다", () => {
     for (const c of cases) {
       if (c.principal.kind !== "guardian") continue;

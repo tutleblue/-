@@ -529,7 +529,7 @@ function buildRequests(students: Student[]): PastRequest[] {
   const minsu = by("김민수"), seojun = by("박서준");
   return [
     { id: "rq-0001", formTypeId: "makeup", guardianId: minsu.guardianId, subjectId: minsu.id, status: "reviewing", createdAt: "2026-10-04T21:10:00+09:00", fields: { missed: "c2-2026-10-08", slot: "mk-c2-2026-10-10-1000" } },
-    { id: "rq-0002", formTypeId: "absence", guardianId: minsu.guardianId, subjectId: minsu.id, status: "received", createdAt: "2026-09-15T15:02:00+09:00", fields: { date: "2026-09-15", kind: "지각", reason: "학교 행사" } },
+    { id: "rq-0002", formTypeId: "absence", guardianId: minsu.guardianId, subjectId: minsu.id, status: "received", createdAt: "2026-09-15T15:02:00+09:00", fields: { date: "2026-09-15", kind: "결석", reason: "학교 행사" } },
     // 박서준: 10월 보강 2회를 이미 사용 → 10월 보강 추가 신청은 월 2회 규칙에 걸린다
     { id: "rq-0003", formTypeId: "makeup", guardianId: seojun.guardianId, subjectId: seojun.id, status: "approved", createdAt: "2026-09-28T19:00:00+09:00", fields: { missed: "c2-2026-10-01", slot: "mk-c2-2026-10-10-1000" } },
     { id: "rq-0004", formTypeId: "makeup", guardianId: seojun.guardianId, subjectId: seojun.id, status: "approved", createdAt: "2026-10-02T10:00:00+09:00", fields: { missed: "c2-2026-10-06", slot: "mk-c2-2026-10-10-1100" } },

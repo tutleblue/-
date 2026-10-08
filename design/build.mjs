@@ -1,0 +1,284 @@
+// M1 화면 스타일 후보. 같은 대화(기준 장면)와 같은 카드 7종을 세 가지 시각 방향으로 그린다.
+// 실행: node design/build.mjs → design/style-a.html, style-b.html, style-c.html, index.html
+// 숫자는 합성 학원 truth(김민수, 2026-10-05 기준)에서 가져온 값이다.
+import { writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const DIR = dirname(fileURLToPath(import.meta.url));
+
+const weekly = [91, 88, 74, 83, 86, 88, 81, 81];
+const spark = (() => {
+  const w = 220, h = 44, min = 60, max = 100;
+  const pts = weekly.map((v, i) => [(i / (weekly.length - 1)) * w, h - ((v - min) / (max - min)) * h]);
+  const avgY = h - ((71.2 - min) / (max - min)) * h;
+  return `<svg class="spark" viewBox="-4 -4 ${w + 8} ${h + 8}" role="img" aria-label="주간테스트 1~8회 점수 추이">
+    <line x1="0" x2="${w}" y1="${avgY}" y2="${avgY}" class="spark-avg"/>
+    <polyline points="${pts.map((p) => p.join(",")).join(" ")}" class="spark-line"/>
+    ${pts.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 3.5 : 2}" class="spark-dot${i === pts.length - 1 ? " last" : ""}"/>`).join("")}
+  </svg>`;
+})();
+
+const thread = `
+<div class="day"><span>오늘</span></div>
+
+<div class="msg me"><p>중2 심화반 수업료랑 시간 알려 주세요</p></div>
+
+<article class="card info" aria-label="안내 카드">
+  <header class="card-h"><span class="tag">안내</span><h3>중2 심화반</h3></header>
+  <dl class="facts">
+    <div><dt>수업료</dt><dd><b>월 350,000원</b> <span class="muted">주 2회</span></dd></div>
+    <div><dt>시간</dt><dd>화·목 19:00–21:00</dd></div>
+    <div><dt>담당</dt><dd>남궁별 선생님</dd></div>
+  </dl>
+  <footer class="src">근거: 2026년 2학기 수강료표 · 시간표</footer>
+</article>
+
+<div class="msg me"><p>민수 이번 달 어땠어요?</p></div>
+<div class="msg bot"><p>이번 달은 기록이 아직 적어서 최근 4주로 보여 드릴게요.</p></div>
+
+<article class="card child" aria-label="자녀 현황 카드">
+  <header class="card-h"><span class="tag">자녀 현황</span><h3>김민수 · 최근 4주</h3></header>
+  <div class="metrics">
+    <div class="metric"><span class="k">출석</span><span class="v">6<small>/7회</small></span><span class="sub">결석 9/15</span></div>
+    <div class="metric"><span class="k">주간테스트</span><span class="v">81<small>점</small></span><span class="sub">반 평균 71.2</span></div>
+    <div class="metric"><span class="k">숙제 수행</span><span class="v">83<small>%</small></span><span class="sub">5~8주차</span></div>
+  </div>
+  <div class="trend"><span class="k">주간테스트 1~8회</span>${spark}</div>
+  <footer class="src asof">10월 5일 가져온 자료 기준 <button class="link">자세히 보기</button></footer>
+</article>
+
+<div class="msg me"><p>다음 주 화요일에 못 가는데 보강 되나요?</p></div>
+<div class="msg bot"><p>결석 3일 전까지 신청하면 한 달에 2회까지 보강받을 수 있어요. 신청서를 채워 두었어요.</p><span class="cite">근거: 보강 규정</span></div>
+
+<article class="card form" aria-label="신청서 카드">
+  <header class="card-h"><span class="tag">신청서</span><h3>보강 신청</h3><span class="pill">승인 후 확정</span></header>
+  <ul class="fields">
+    <li><span class="k">자녀</span><span class="v">김민수 · 중2 심화반</span><button class="edit">수정</button></li>
+    <li><span class="k">빠지는 수업</span><span class="v">10/13(화) 19:00</span><button class="edit">수정</button></li>
+    <li class="todo"><span class="k">희망 보강 시간</span><span class="v">아래에서 골라 주세요</span></li>
+  </ul>
+</article>
+
+<article class="card slots" aria-label="시간 선택 카드">
+  <header class="card-h"><span class="tag">시간 선택</span><h3>보강 가능한 시간</h3></header>
+  <div class="slot-grid">
+    <button class="slot" disabled><b>10/16 금</b><span>17:00</span><em>마감</em></button>
+    <button class="slot on"><b>10/17 토</b><span>10:00</span><em>3자리</em></button>
+    <button class="slot"><b>10/17 토</b><span>11:00</span><em>3자리</em></button>
+    <button class="slot"><b>10/24 토</b><span>10:00</span><em>3자리</em></button>
+    <button class="slot"><b>10/24 토</b><span>11:00</span><em>2자리</em></button>
+  </div>
+  <div class="actions"><button class="ghost">취소</button><button class="primary">이 내용으로 제출</button></div>
+</article>
+
+<article class="card receipt" aria-label="접수 카드">
+  <header class="card-h"><span class="tag">접수</span><h3>보강 신청이 접수됐어요</h3></header>
+  <p class="rno">접수 번호 <b>R-0005</b> · 10/17(토) 10:00</p>
+  <ol class="steps"><li class="done">접수</li><li class="now">확인 중</li><li>확정</li></ol>
+  <p class="muted">확인되면 알려 드릴게요. 위쪽 <b>내 신청</b>에서도 볼 수 있어요.</p>
+</article>
+
+<div class="msg me"><p>환불 규정이 어떻게 돼요?</p></div>
+
+<article class="card handoff" aria-label="직원 연결 카드">
+  <header class="card-h"><span class="tag">직원 연결</span><h3>직원에게 전달했어요</h3></header>
+  <p>등록된 환불 규정이 없어서 제가 답하지 않았어요. 학원에서 직접 답해 드릴게요.</p>
+  <p class="eta">보통 <b>2시간 안</b>에 답해요 · 평일 14:00–22:00</p>
+</article>
+
+<div class="msg me"><p>11월에도 계속 다닐게요</p></div>
+
+<article class="card consent" aria-label="동의 카드">
+  <header class="card-h"><span class="tag">동의</span><h3>재등록 전에 확인해 주세요</h3></header>
+  <div class="terms"><b>수강 약관(요약)</b><p>수강 변경과 재등록은 매월 25일까지 신청하면 다음 달 1일부터 적용됩니다. …</p><button class="link">전문 보기</button></div>
+  <label class="check"><input type="checkbox"> 약관 내용을 확인했어요</label>
+  <div class="actions"><button class="primary" disabled>다음</button></div>
+</article>
+`;
+
+const shell = (theme) => `
+<div class="app ${theme}">
+  <header class="top">
+    <div class="brand"><span class="logo" aria-hidden="true">가</span><div><b>가람수학학원</b><small>AI 상담 · 확실하지 않으면 직원이 답해요</small></div></div>
+    <button class="inbox" aria-label="내 신청과 알림, 새 소식 1건">내 신청<span class="badge">1</span></button>
+  </header>
+  <div class="childbar"><button class="child-chip">김민수 · 중2 심화반 <span aria-hidden="true">▾</span></button><span class="muted">연결된 자녀</span></div>
+  <main class="thread">${thread}</main>
+  <div class="dock">
+    <nav class="chips" aria-label="자주 하는 일"><button>민수 요즘</button><button>보강 신청</button><button>결석 알림</button><button>수업료</button><button>시간표</button><button>상담 신청</button></nav>
+    <form class="composer" onsubmit="return false"><input placeholder="무엇이든 물어보세요" aria-label="메시지"><button class="send" aria-label="보내기">↑</button></form>
+  </div>
+</div>`;
+
+const base = `
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.5;min-height:100vh;display:flex;justify-content:center}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+.app{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);position:relative}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px;background:var(--bar);position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:10px;align-items:center;min-width:0}
+.brand b{display:block;font-size:16px}
+.brand small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo{width:34px;height:34px;flex:none;border-radius:var(--r-logo);display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font-weight:700}
+.inbox{position:relative;padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:13px;white-space:nowrap;background:var(--card)}
+.badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--alert);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 5px}
+.childbar{display:flex;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--bar)}
+.child-chip{padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-weight:600;font-size:13px}
+.muted{color:var(--muted);font-size:13px}
+.thread{flex:1;padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px}
+.day{text-align:center;font-size:12px;color:var(--muted)}
+.msg{max-width:85%}
+.msg p{padding:10px 14px;border-radius:var(--r-bubble)}
+.msg.me{align-self:flex-end}
+.msg.me p{background:var(--me);color:var(--on-me)}
+.msg.bot{align-self:flex-start}
+.msg.bot p{background:var(--bot)}
+.cite{display:block;font-size:12px;color:var(--muted);margin:4px 4px 0}
+.card{background:var(--card);border-radius:var(--r-card);padding:14px 16px;box-shadow:var(--shadow);border:var(--card-border);display:flex;flex-direction:column;gap:10px}
+.card-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card-h h3{font-size:16px;font-family:var(--head-font);font-weight:700}
+.tag{font-size:11px;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:var(--r-tag);background:var(--tag-bg);color:var(--tag-ink)}
+.pill{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.facts{display:grid;gap:6px}
+.facts div{display:flex;gap:12px}
+.facts dt{width:56px;flex:none;color:var(--muted);font-size:13px;padding-top:1px}
+.src{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px dashed var(--line);padding-top:8px}
+.link{color:var(--accent-ink);font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{display:flex;flex-direction:column;padding:10px;border-radius:var(--r-inner);background:var(--inner)}
+.metric .k{font-size:12px;color:var(--muted)}
+.metric .v{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2;font-family:var(--num-font)}
+.metric .v small{font-size:13px;font-weight:600;margin-left:1px}
+.metric .sub{font-size:11px;color:var(--muted)}
+.trend{display:flex;flex-direction:column;gap:2px}
+.trend .k{font-size:12px;color:var(--muted)}
+.spark{width:100%;height:56px}
+.spark-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.spark-avg{stroke:var(--muted);stroke-dasharray:3 4;stroke-width:1}
+.spark-dot{fill:var(--card);stroke:var(--accent);stroke-width:1.5}
+.spark-dot.last{fill:var(--accent)}
+.fields{list-style:none;display:grid;gap:2px}
+.fields li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.fields li:last-child{border-bottom:0}
+.fields .k{width:92px;flex:none;color:var(--muted);font-size:13px}
+.fields .v{flex:1;font-weight:600}
+.fields .todo .v{color:var(--alert);font-weight:600}
+.edit{font-size:12px;color:var(--accent-ink);padding:4px 8px;border-radius:6px;background:var(--accent-soft)}
+.slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.slot{display:flex;flex-direction:column;align-items:flex-start;padding:10px;border-radius:var(--r-inner);border:1.5px solid var(--line);background:var(--card);text-align:left;min-height:44px}
+.slot b{font-size:13px}.slot span{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}.slot em{font-style:normal;font-size:11px;color:var(--muted)}
+.slot.on{border-color:var(--accent);background:var(--accent-soft)}
+.slot:disabled{opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.actions{display:flex;gap:8px;justify-content:flex-end}
+.primary{background:var(--accent);color:var(--on-accent);padding:12px 18px;border-radius:var(--r-btn);font-weight:700;min-height:44px}
+.primary:disabled{opacity:.4}
+.ghost{white-space:nowrap;flex:none;padding:12px 14px;border-radius:var(--r-btn);color:var(--muted);min-height:44px}
+.rno{font-size:14px}
+.steps{list-style:none;display:flex;gap:6px}
+.steps li{flex:1;text-align:center;font-size:12px;padding:6px 0;border-radius:var(--r-tag);background:var(--inner);color:var(--muted)}
+.steps .done{background:var(--accent-soft);color:var(--accent-ink);font-weight:700}
+.steps .now{background:var(--accent);color:var(--on-accent);font-weight:700}
+.eta{font-size:13px;color:var(--muted)}
+.terms{padding:10px 12px;border-radius:var(--r-inner);background:var(--inner);font-size:13px;display:grid;gap:4px}
+.check{display:flex;gap:10px;align-items:center;font-weight:600;min-height:44px}
+.check input{width:20px;height:20px;accent-color:var(--accent)}
+.dock{position:sticky;bottom:0;background:var(--bar);border-top:1px solid var(--line);padding:8px 0 calc(10px + env(safe-area-inset-bottom))}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:0 16px 8px;scrollbar-width:none}
+.chips button{flex:none;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px}
+.composer{display:flex;gap:8px;padding:0 16px}
+.composer input{flex:1;min-width:0;padding:12px 16px;border-radius:var(--r-input);border:1.5px solid var(--line);background:var(--card);font-size:16px}
+.composer input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.send{width:46px;height:46px;flex:none;border-radius:var(--r-input);background:var(--accent);color:var(--on-accent);font-size:20px;font-weight:700}
+`;
+
+const themes = {
+  a: {
+    title: "후보 A · 알림장",
+    note: "종이 알림장처럼 따뜻한 톤. 카드가 '학원에서 온 쪽지'처럼 보여 학부모에게 친근하다.",
+    fonts: `<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">`,
+    css: `:root{--font:"Gowun Dodum",system-ui,sans-serif;--head-font:"Gowun Batang",serif;--num-font:"Gowun Batang",serif;
+--page:#e9e1d1;--bg:#f7f2e8;--bar:#f7f2e8;--card:#fffdf8;--inner:#f3ecdd;--ink:#2b2620;--muted:#7a6f60;--line:#e2d6c1;
+--accent:#2f5d50;--accent-soft:#e3ece6;--accent-ink:#24493f;--on-accent:#fff;--alert:#b4532a;--me:#2f5d50;--on-me:#fff;--bot:#fffdf8;
+--tag-bg:#2f5d50;--tag-ink:#fff;--shadow:0 1px 0 #e2d6c1;--card-border:1px solid #e2d6c1;
+--r-card:6px;--r-inner:6px;--r-bubble:14px 14px 4px 14px;--r-tag:3px;--r-btn:8px;--r-input:12px;--r-logo:50%}
+.card{border-top:3px double var(--accent)}
+.msg.bot p{border:1px solid var(--line);border-radius:14px 14px 14px 4px}`,
+  },
+  b: {
+    title: "후보 B · 메신저",
+    note: "익숙한 메신저 대화 모양. 카드도 말풍선처럼 왼쪽에 붙어 '대화 안에서 처리된다'는 느낌이 강하다.",
+    fonts: `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">`,
+    css: `:root{--font:"Pretendard",system-ui,sans-serif;--head-font:var(--font);--num-font:var(--font);
+--page:#d9e0e7;--bg:#e8eef3;--bar:#f6f8fa;--card:#fff;--inner:#f1f4f7;--ink:#1c2328;--muted:#66727c;--line:#dbe2e8;
+--accent:#0f7f86;--accent-soft:#e0f2f2;--accent-ink:#0b646a;--on-accent:#fff;--alert:#d1453b;--me:#ffe9a8;--on-me:#2a2410;--bot:#fff;
+--tag-bg:#e0f2f2;--tag-ink:#0b646a;--shadow:0 1px 2px rgba(20,40,60,.08);--card-border:0;
+--r-card:4px 18px 18px 18px;--r-inner:12px;--r-bubble:18px;--r-tag:999px;--r-btn:12px;--r-input:23px;--r-logo:12px}
+.card{max-width:92%;align-self:flex-start;margin-left:40px;position:relative}
+.card::before{content:"가";position:absolute;left:-40px;top:0;width:32px;height:32px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+.card + .card::before{display:none}
+.msg.bot{margin-left:40px}
+.msg.me p{border-radius:18px 4px 18px 18px}
+.msg.bot p{border-radius:4px 18px 18px 18px}
+.metric .v{font-size:22px}`,
+  },
+  c: {
+    title: "후보 C · 또렷한 카드",
+    note: "숫자와 버튼을 크게. 대화보다 카드가 주인공이라, 흘끗 봐도 무엇을 눌러야 하는지 보인다.",
+    fonts: `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">`,
+    css: `:root{--font:"Pretendard",system-ui,sans-serif;--head-font:var(--font);--num-font:var(--font);
+--page:#eceef4;--bg:#f7f8fb;--bar:#fff;--card:#fff;--inner:#f2f4f9;--ink:#141826;--muted:#5d6478;--line:#e3e6ef;
+--accent:#3346d3;--accent-soft:#e9ecfd;--accent-ink:#2635a8;--on-accent:#fff;--alert:#d93f2f;--me:#141826;--on-me:#fff;--bot:transparent;
+--tag-bg:transparent;--tag-ink:#3346d3;--shadow:0 2px 10px rgba(20,24,38,.06);--card-border:1px solid #e3e6ef;
+--r-card:16px;--r-inner:12px;--r-bubble:20px;--r-tag:0;--r-btn:12px;--r-input:14px;--r-logo:10px}
+.tag{padding:0;text-transform:none;font-size:12px}
+.card-h{flex-direction:column;align-items:flex-start;gap:2px}
+.card-h h3{font-size:19px;letter-spacing:-.01em}
+.pill{margin-left:0}
+.msg.bot p{padding:0 2px;color:var(--ink)}
+.metric{background:transparent;padding:0;border-left:3px solid var(--accent-soft);padding-left:10px}
+.metric .v{font-size:30px;letter-spacing:-.02em}
+.primary{width:100%;font-size:16px}
+.actions{flex-direction:row-reverse}
+.facts dd b{font-size:20px}`,
+  },
+};
+
+for (const [k, t] of Object.entries(themes)) {
+  const html = `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>${t.title}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">${t.fonts}
+<style>${base}${t.css}</style></head>
+<body>${shell(`theme-${k}`)}</body></html>`;
+  writeFileSync(join(DIR, `style-${k}.html`), html);
+}
+
+writeFileSync(
+  join(DIR, "index.html"),
+  `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스타일 후보 비교</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#f4f5f7;--ink:#161a22;--muted:#5d6472;--card:#fff;--line:#e2e5ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161b;--ink:#eef0f4;--muted:#a3a9b5;--card:#1d2027;--line:#2c3039}}
+:root[data-theme="dark"]{--bg:#14161b;--ink:#eef0f4;--muted:#a3a9b5;--card:#1d2027;--line:#2c3039}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,sans-serif;padding:24px 16px}
+h1{font-size:22px}p.lead{color:var(--muted);margin:6px 0 20px;max-width:70ch}
+.grid{display:flex;gap:20px;overflow-x:auto;padding-bottom:12px}
+figure{flex:none;width:390px;max-width:calc(100vw - 32px)}
+figcaption{margin-bottom:8px}figcaption b{display:block}figcaption span{color:var(--muted);font-size:14px}
+iframe{width:100%;height:780px;border:1px solid var(--line);border-radius:24px;background:#fff}
+a{color:inherit}
+</style></head><body>
+<h1>챗봇 화면 스타일 후보</h1>
+<p class="lead">세 후보 모두 같은 대화와 같은 카드 7종(안내, 자녀 현황, 신청서, 시간 선택, 접수, 직원 연결, 동의)을 담았습니다. 구성은 같고 시각 방향만 다릅니다. 각 화면은 폰 세로(390px) 기준이며, 안에서 스크롤됩니다.</p>
+<div class="grid">
+${Object.entries(themes)
+  .map(([k, t]) => `<figure><figcaption><b>${t.title}</b><span>${t.note}</span> <a href="style-${k}.html">따로 열기</a></figcaption><iframe src="style-${k}.html" title="${t.title}" loading="lazy"></iframe></figure>`)
+  .join("\n")}
+</div></body></html>`,
+);
+console.log("design/style-a.html, style-b.html, style-c.html, index.html");

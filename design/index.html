@@ -1,0 +1,22 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스타일 후보 비교</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#f4f5f7;--ink:#161a22;--muted:#5d6472;--card:#fff;--line:#e2e5ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161b;--ink:#eef0f4;--muted:#a3a9b5;--card:#1d2027;--line:#2c3039}}
+:root[data-theme="dark"]{--bg:#14161b;--ink:#eef0f4;--muted:#a3a9b5;--card:#1d2027;--line:#2c3039}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,sans-serif;padding:24px 16px}
+h1{font-size:22px}p.lead{color:var(--muted);margin:6px 0 20px;max-width:70ch}
+.grid{display:flex;gap:20px;overflow-x:auto;padding-bottom:12px}
+figure{flex:none;width:390px;max-width:calc(100vw - 32px)}
+figcaption{margin-bottom:8px}figcaption b{display:block}figcaption span{color:var(--muted);font-size:14px}
+iframe{width:100%;height:780px;border:1px solid var(--line);border-radius:24px;background:#fff}
+a{color:inherit}
+</style></head><body>
+<h1>챗봇 화면 스타일 후보</h1>
+<p class="lead">세 후보 모두 같은 대화와 같은 카드 7종(안내, 자녀 현황, 신청서, 시간 선택, 접수, 직원 연결, 동의)을 담았습니다. 구성은 같고 시각 방향만 다릅니다. 각 화면은 폰 세로(390px) 기준이며, 안에서 스크롤됩니다.</p>
+<div class="grid">
+<figure><figcaption><b>후보 A · 알림장</b><span>종이 알림장처럼 따뜻한 톤. 카드가 '학원에서 온 쪽지'처럼 보여 학부모에게 친근하다.</span> <a href="style-a.html">따로 열기</a></figcaption><iframe src="style-a.html" title="후보 A · 알림장" loading="lazy"></iframe></figure>
+<figure><figcaption><b>후보 B · 메신저</b><span>익숙한 메신저 대화 모양. 카드도 말풍선처럼 왼쪽에 붙어 '대화 안에서 처리된다'는 느낌이 강하다.</span> <a href="style-b.html">따로 열기</a></figcaption><iframe src="style-b.html" title="후보 B · 메신저" loading="lazy"></iframe></figure>
+<figure><figcaption><b>후보 C · 또렷한 카드</b><span>숫자와 버튼을 크게. 대화보다 카드가 주인공이라, 흘끗 봐도 무엇을 눌러야 하는지 보인다.</span> <a href="style-c.html">따로 열기</a></figcaption><iframe src="style-c.html" title="후보 C · 또렷한 카드" loading="lazy"></iframe></figure>
+</div></body></html>
