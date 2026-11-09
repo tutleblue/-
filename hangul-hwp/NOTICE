@@ -1,0 +1,21 @@
+hangul-hwp
+
+본 제품은 한글과컴퓨터의 한글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
+"한글", "HWP", "HWPX"는 (주)한글과컴퓨터의 상표이며, 이 도구는 한글과컴퓨터와 관계가 없습니다.
+
+Third-party material
+--------------------
+
+assets/blank.hwpx
+  Derived from testFile/reader_writer/SimpleTable.hwpx of neolord0/hwpxlib
+  (https://github.com/neolord0/hwpxlib), licensed under the Apache License 2.0.
+  The file was saved by Hancom Office Hangul. Changes: body reduced to the section-definition
+  paragraph; preview image, creator, save times and application name removed or replaced.
+
+assets/hwp-template.bin
+  The DocInfo and BodyText/Section0 records of sample_hwp/blank.hwp of neolord0/hwplib
+  (https://github.com/neolord0/hwplib), licensed under the Apache License 2.0.
+  Only these two record streams are used; the source file's summary information, linked-document
+  path, scripts and embedded image are not included.
+
+A copy of the Apache License 2.0 is in licenses/Apache-2.0.txt.
