@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      A plain launch theme. Colours are set by Compose at runtime, so this only has to avoid a
+      flash of the wrong background while the activity starts.
+    -->
+    <style name="Theme.Geulbeot" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/launch_background</item>
+        <item name="android:statusBarColor">@color/launch_chrome</item>
+        <item name="android:navigationBarColor">@color/launch_chrome</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

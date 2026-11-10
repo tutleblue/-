@@ -1,0 +1,158 @@
+name: 글벗 Android
+
+# APK를 만들고, 태그를 밀면 릴리즈에 올립니다.
+# 서드파티 액션은 쓰지 않습니다. 공식 actions/checkout·setup-java와 러너에 들어 있는
+# Android SDK·gh CLI만 씁니다. 서명 재료는 저장소 시크릿에서만 오고, 작업이 끝나면 지웁니다.
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "릴리즈로 올릴 태그 (예: v1.0.0). 비워 두면 빌드만 합니다."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 빌드
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Android SDK 준비
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0" > /dev/null
+          # settings.gradle.kts는 SDK가 보일 때만 :app 을 빌드 대상에 넣습니다.
+          echo "sdk.dir=$ANDROID_HOME" > geulbeot/local.properties
+
+      - name: 문서 엔진 테스트
+        working-directory: geulbeot
+        run: ./gradlew :core-hwp:test --no-daemon --console=plain
+
+      - name: 서명 준비
+        id: signing
+        working-directory: geulbeot
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -n "${KEYSTORE_BASE64:-}" ]; then
+            printf '%s' "$KEYSTORE_BASE64" | base64 -d > release.jks
+            {
+              echo "storeFile=release.jks"
+              echo "storePassword=${STORE_PASSWORD}"
+              echo "keyAlias=${KEY_ALIAS}"
+              echo "keyPassword=${KEY_PASSWORD}"
+            } > keystore.properties
+            echo "variant=release" >> "$GITHUB_OUTPUT"
+            echo "서명 키를 찾았습니다. 릴리즈 서명으로 빌드합니다."
+          else
+            echo "variant=debug" >> "$GITHUB_OUTPUT"
+            echo "::notice::서명 키가 없어 디버그 서명으로 빌드합니다. 자체 업데이트가 동작하려면 고정된 서명 키가 필요합니다."
+          fi
+
+      - name: APK 빌드
+        working-directory: geulbeot
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.signing.outputs.variant }}" = "release" ]; then
+            ./gradlew :app:assembleRelease --no-daemon --console=plain
+          else
+            ./gradlew :app:assembleDebug --no-daemon --console=plain
+          fi
+
+      - name: 서명 재료 지우기
+        if: always()
+        working-directory: geulbeot
+        run: rm -f release.jks keystore.properties
+
+      - name: APK 이름 정리
+        id: apk
+        run: |
+          set -euo pipefail
+          VERSION=$(python3 -c "import json;print(json.load(open('geulbeot/version.json'))['version'])")
+          # -print -quit rather than a pipe into head: with `set -o pipefail`, head closing the
+          # pipe early makes find die of SIGPIPE and takes the step down with it.
+          SOURCE=$(find geulbeot/app/build/outputs/apk -name '*.apk' -print -quit)
+          if [ -z "$SOURCE" ]; then
+            echo "APK가 만들어지지 않았습니다." >&2
+            exit 1
+          fi
+          mkdir -p out
+          TARGET="out/geulbeot-${VERSION}-${{ steps.signing.outputs.variant }}.apk"
+          cp "$SOURCE" "$TARGET"
+          cp geulbeot/version.json out/version.json
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "path=$TARGET" >> "$GITHUB_OUTPUT"
+          ls -la out/
+
+      - name: APK 확인
+        run: |
+          set -euo pipefail
+          # Proof of what actually came out, rather than trusting that a green build means a
+          # usable package: the manifest as the platform will read it, and the signature.
+          BT="$ANDROID_HOME/build-tools/35.0.0"
+          "$BT/aapt2" dump badging "${{ steps.apk.outputs.path }}" \
+            | grep -E "^(package|sdkVersion|targetSdkVersion|application-label|launchable-activity|uses-permission)" || true
+          "$BT/apksigner" verify --print-certs --verbose "${{ steps.apk.outputs.path }}" \
+            | grep -E "^(Verifies|Verified using|Signer #1 certificate (DN|SHA-256))" || true
+
+      - name: 내려받을 수 있게 올리기
+        uses: actions/upload-artifact@v4
+        with:
+          name: geulbeot-apk
+          path: out/
+          retention-days: 30
+
+      # 태그를 밀어서 돌든, 태그 이름을 입력해 손으로 돌리든 여기로 옵니다. 후자는 개발 환경에서
+      # 태그를 밀 수 없을 때를 위한 길입니다 - gh 가 태그를 이 커밋에 직접 만들어 줍니다.
+      - name: 릴리즈에 올리기
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release_tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VARIANT: ${{ steps.signing.outputs.variant }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          TAG="${RELEASE_TAG:-$GITHUB_REF_NAME}"
+          NOTE=""
+          if [ "$VARIANT" = "debug" ]; then
+            NOTE=$'\n\n> ⚠️ 이 APK는 **디버그 서명**입니다. 설치해서 쓸 수 있지만, 빌드마다 서명 키가 달라 앱 내 업데이트로 덮어쓸 수 없습니다. 저장소 시크릿에 서명 키를 넣으면 릴리즈 서명으로 바뀝니다.'
+          fi
+          python3 - <<'PY' > notes.md
+          import json
+          v = json.load(open("geulbeot/version.json"))
+          print(f"## 글벗 {v['version']}\n")
+          print(v.get("changelog", ""))
+          PY
+          printf '%s' "$NOTE" >> notes.md
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "글벗 ${{ steps.apk.outputs.version }}" \
+            --notes-file notes.md \
+            "${{ steps.apk.outputs.path }}" \
+            "out/version.json"

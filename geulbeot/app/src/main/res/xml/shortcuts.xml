@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- One press from the launcher into the two things people start with. -->
+    <shortcut
+        android:shortcutId="new_document"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_new"
+        android:shortcutShortLabel="@string/shortcut_new_short"
+        android:shortcutLongLabel="@string/shortcut_new_long">
+        <intent
+            android:action="kr.geulbeot.app.action.NEW_DOCUMENT"
+            android:targetPackage="kr.geulbeot.app"
+            android:targetClass="kr.geulbeot.app.MainActivity" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="open_document"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_open"
+        android:shortcutShortLabel="@string/shortcut_open_short"
+        android:shortcutLongLabel="@string/shortcut_open_long">
+        <intent
+            android:action="kr.geulbeot.app.action.OPEN_DOCUMENT"
+            android:targetPackage="kr.geulbeot.app"
+            android:targetClass="kr.geulbeot.app.MainActivity" />
+    </shortcut>
+</shortcuts>

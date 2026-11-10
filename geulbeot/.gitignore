@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+
+# Build outputs
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Signing material must never be committed
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Distribution archives are build output, not source
+dist/

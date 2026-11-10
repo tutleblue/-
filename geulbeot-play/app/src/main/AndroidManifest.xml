@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      No permissions at all. The app never reaches the network, and it never asks for storage:
+      files are reached through the Storage Access Framework, so it can only ever see the file the
+      user picked, for as long as they leave it picked.
+    -->
+
+    <application
+        android:name=".GeulbeotApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.Geulbeot"
+        android:enableOnBackInvokedCallback="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode|density|fontScale"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Geulbeot">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Opening a document handed over by another app, by declared media type. -->
+            <intent-filter android:label="@string/open_with_geulbeot">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="application/x-hwp" />
+                <data android:mimeType="application/haansofthwp" />
+                <data android:mimeType="application/vnd.hancom.hwp" />
+                <data android:mimeType="application/hwp+zip" />
+                <data android:mimeType="application/vnd.hancom.hwpx" />
+            </intent-filter>
+
+            <!--
+              Many file managers hand over a .hwp with a generic media type, so match the extension
+              too. The host wildcard is required for a pathPattern filter to apply.
+            -->
+            <intent-filter android:label="@string/open_with_geulbeot">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\.hwp" />
+                <data android:pathPattern=".*\\.hwpx" />
+                <data android:pathPattern=".*\\..*\\.hwp" />
+                <data android:pathPattern=".*\\..*\\.hwpx" />
+            </intent-filter>
+
+            <!-- Receiving a document shared from another app. -->
+            <intent-filter android:label="@string/open_with_geulbeot">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-hwp" />
+                <data android:mimeType="application/hwp+zip" />
+                <data android:mimeType="application/vnd.hancom.hwp" />
+                <data android:mimeType="application/vnd.hancom.hwpx" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <!--
+          Used to hand exported files (PDF, text) to other apps without
+          exposing the app's private directory. Grants are per-URI and temporary.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>

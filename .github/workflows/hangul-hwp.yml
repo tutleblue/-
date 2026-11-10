@@ -1,0 +1,108 @@
+name: hangul-hwp 스킬
+
+# 한글 문서 스킬을 검사하고 .skill 파일로 묶습니다. release_tag를 주고 실행하면 릴리즈에 올립니다.
+# 서드파티 액션은 쓰지 않습니다(공식 checkout·setup-python과 러너의 gh CLI만).
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+    paths: ["hangul-hwp/**", ".github/workflows/hangul-hwp.yml"]
+  pull_request:
+    paths: ["hangul-hwp/**", ".github/workflows/hangul-hwp.yml"]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "릴리즈로 올릴 태그 (예: hangul-hwp-v1.0.0). 비워 두면 검사·패키징만 합니다."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hangul-hwp-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: 검사 (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest, python: "3.10"}
+          - {os: ubuntu-latest, python: "3.12"}
+          # Windows: the console is not UTF-8 by default, which is exactly where Korean text breaks.
+          - {os: windows-latest, python: "3.12"}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: 공개 예제 문서 받기 (Apache-2.0)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/samples"
+          git clone -q --depth 1 https://github.com/neolord0/hwplib "$RUNNER_TEMP/samples/hwplib"
+          git clone -q --depth 1 https://github.com/neolord0/hwpxlib "$RUNNER_TEMP/samples/hwpxlib"
+          echo "HWP_SAMPLES=$RUNNER_TEMP/samples" >> "$GITHUB_ENV"
+
+      - name: 단위 테스트 + 예제 93개 검사
+        shell: bash
+        run: python -m unittest discover -s hangul-hwp/tests -v
+
+      - name: 명령줄 확인 (기본 콘솔 인코딩 그대로)
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          printf '# 시험\n\n| 이름 | 값 |\n|---|---|\n| {{이름}} | 1 |\n' > in.md
+          python "$GITHUB_WORKSPACE/hangul-hwp/scripts/hwp.py" create t.hwp --from in.md
+          python "$GITHUB_WORKSPACE/hangul-hwp/scripts/hwp.py" replace t.hwp -o u.hwp --pair "{{이름}}" "홍길동" --strict
+          python "$GITHUB_WORKSPACE/hangul-hwp/scripts/hwp.py" read u.hwp > out.md
+          grep -q "홍길동" out.md
+
+  package:
+    name: .skill 패키지
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 묶기
+        run: |
+          set -euo pipefail
+          python3 - <<'EOF'
+          import os, zipfile
+          root = "hangul-hwp"
+          skip_dirs = {"__pycache__", "tests"}
+          with zipfile.ZipFile("hangul-hwp.skill", "w", zipfile.ZIP_DEFLATED) as z:
+              for d, dirs, files in os.walk(root):
+                  dirs[:] = sorted(x for x in dirs if x not in skip_dirs)
+                  for f in sorted(files):
+                      if f.endswith(".pyc"):
+                          continue
+                      p = os.path.join(d, f)
+                      z.write(p, p)
+          print(sorted(zipfile.ZipFile("hangul-hwp.skill").namelist()))
+          EOF
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hangul-hwp-skill
+          path: hangul-hwp.skill
+
+      - name: 릴리즈에 올리기
+        if: inputs.release_tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" hangul-hwp.skill \
+            --target "$GITHUB_SHA" \
+            --title "hangul-hwp ${RELEASE_TAG#hangul-hwp-}" \
+            --notes "Claude가 한글 문서(.hwp/.hwpx)를 읽고·고치고·만들게 하는 스킬. claude.ai 설정 → 기능 → 스킬에서 hangul-hwp.skill을 업로드하세요. 자세한 내용은 저장소의 hangul-hwp/README.md."

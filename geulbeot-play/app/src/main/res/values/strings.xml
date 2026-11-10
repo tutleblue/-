@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Only the strings the platform itself needs live here: the launcher label, the chooser label for
+  the file-open intent filters, and the launcher shortcut labels. The in-app wording is written
+  inline in the Compose code, which keeps this a single-language Korean app without a second file
+  that can drift out of step.
+-->
+<resources>
+    <string name="app_name">글벗</string>
+    <string name="open_with_geulbeot">글벗으로 열기</string>
+
+    <string name="shortcut_new_short">새 문서</string>
+    <string name="shortcut_new_long">새 한글 문서 만들기</string>
+    <string name="shortcut_open_short">문서 열기</string>
+    <string name="shortcut_open_long">기기에서 한글 문서 열기</string>
+</resources>

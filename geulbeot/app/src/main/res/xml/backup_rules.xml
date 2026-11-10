@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!--
+      Settings only.
+
+      One <include> makes this an allow list: the settings file is backed up and nothing else is.
+      That is what keeps the recent-document list out, and keeping it out is deliberate - each
+      entry carries the file name and the first line or so of the document, which is document
+      content, and content belongs on the device. The Storage Access Framework grants those
+      entries refer to are tied to this device anyway, so a restored list would mostly be dead
+      links.
+
+      Listing those paths again as <exclude> would be worse than redundant: an exclude that names
+      a path outside the included set is an error, and the cache directory is never backed up at
+      all, so there is no "cache" domain to exclude.
+    -->
+    <include domain="sharedpref" path="geulbeot_settings.xml" />
+</full-backup-content>
