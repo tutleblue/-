@@ -31,7 +31,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {os: ubuntu-latest, python: "3.8"}
+          - {os: ubuntu-latest, python: "3.10"}
           - {os: ubuntu-latest, python: "3.12"}
           # Windows: the console is not UTF-8 by default, which is exactly where Korean text breaks.
           - {os: windows-latest, python: "3.12"}
